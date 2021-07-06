@@ -31,7 +31,11 @@
     <% for (let invoice of dataInvoice) {%>
     <tr>
       <td><%= ++i %></td>
-      
+      <td>
+      <% invoice.items.forEach(function(item){ %>
+      <p><%= item.pro_id.title %></p>
+      <%})%>
+      </td>
       <td><%= invoice.totalItems %></td>
       <td><%= moment(invoice.createdAt).format('L') %></td>
       <td><%= invoice.totalMoney %></td>

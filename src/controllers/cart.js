@@ -92,7 +92,7 @@ const viewInvoiceDetails = async (req, res) => {
         model: 'Product'
       }
     })
-    console.log(dataInvoice.items);
+    
     res.render('client/order-details', {dataInvoice, moment})
   } catch (error) {
     console.error(error);

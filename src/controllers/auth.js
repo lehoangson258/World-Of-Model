@@ -139,12 +139,13 @@ const doChangePass = async (req, res) => {
 const doForgotPass = async (req, res) => {
   try {
     const {
-      currentPass,
       newPass,
       confirmPass,
       email
     } = req.body
-    const checkUser = await LogIn(email, currentPass)
+    const checkUser = await User.findOne({
+      email: email
+    }).lean()
     if (!checkUser) return res.redirect('/account/forgot-password')
     if (newPass !== confirmPass) return res.render('client/change-pass')
     const hashPass = await bcrypt.hash(confirmPass, 8)

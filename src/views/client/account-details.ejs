@@ -58,6 +58,29 @@
                     </p>
                     <input type="text" class="input-text form-control" name="email" value="<%= user.email %>" required>
                 </div>
+
+                <div class="account-name">
+                    <p for="account_phone">
+                        Phone Number
+                        <span class="required">*</span>
+                    </p>
+                    <input type="text" class="input-text form-control" name="phoneNumber" value="<%= user.phoneNumber %>" required>
+                </div>
+
+                <div class="account-name">
+                    <p for="account_bank">
+                        Bank Name
+                        <span class="required">*</span>
+                    </p>
+                    <input type="text" class="input-text form-control" name="bankName" value="<%= user.bankName %>" required>
+                </div>
+                <div class="account-name">
+                    <p for="account_bankNumber">
+                        Bank Number
+                        <span class="required">*</span>
+                    </p>
+                    <input type="text" class="input-text form-control" name="bankNumber" value="<%= user.bankNumber %>" required>
+                </div>
                 <!-------------------Password change------------------>
                 <button type="submit" class="save-btn">Save Change</button>
             </form>

@@ -585,8 +585,8 @@ form a{
 /*------------------------Account Details-----------------------*/
 /*-------------box-Main------------*/
 .boxMain{
-    margin: 20px 230px 100px 230px;
-    height: 700px;
+    margin: 20px 230px;
+    height: 875px;
 }
 .boxMenu{
     width: 250px;

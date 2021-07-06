@@ -11,7 +11,6 @@ const InvoiceSchema = new mongoose.Schema({
     },
     amount: {
       type: Number,
-      default: 1
     }
   }],
   totalItems: {

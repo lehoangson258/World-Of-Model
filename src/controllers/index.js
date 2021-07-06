@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Product = require('../models/Product');
 const Category = require('../models/Category');
+const Invoice = require('../models/Invoice');
 
 const adminDashBoard = async (req, res) => {
   try {
@@ -9,11 +10,15 @@ const adminDashBoard = async (req, res) => {
       products: await Product.find(),
       category: await Category.find(),
     }
-
+    const invoice = await Invoice.find()
+    const income = invoice.reduce((total, item) => {
+      return total + item.totalMoney
+    }, 0)
     res.render('admin/dashboard', {
       products: data.products.length,
       category: data.category.length,
       users: data.user.length,
+      income: income
     })
 
   } catch (error) {

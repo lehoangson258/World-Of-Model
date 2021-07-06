@@ -41,7 +41,7 @@
                 <h3>Invoice To:</h3>
                 <h4><%= invoice.user_id.username %></h4>
                 <p><%= invoice.user_id.address.details %> </p>
-                <p>+83 80808 9999 </p>
+                <p><%= invoice.user_id.phoneNumber %></p>
                 <p><%= invoice.user_id.email %></p>
 
             </div>
@@ -58,7 +58,12 @@
 
                         <tr>
                             <td>Bank Name:</td>
-                            <td>VietcomBank</td>
+                            <td><%= invoice.user_id.bankName %></td>
+                        </tr>
+
+                        <tr>
+                            <td>Bank Name:</td>
+                            <td><%= invoice.user_id.bankNumber %></td>
                         </tr>
 
                         <tr>

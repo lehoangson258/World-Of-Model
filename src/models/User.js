@@ -14,7 +14,17 @@ const UserSchema = new mongoose.Schema({
     type: String,
     unique: true,
     match: /.+\@.+\..+/,
-    required: true
+    required: true,
+  },
+  phoneNumber: {
+    type: String,
+  },
+  bankName: {
+    type: String,
+    uppercase: true
+  },
+  bankNumber: {
+    type: String,
   },
   address: {
     details: String,

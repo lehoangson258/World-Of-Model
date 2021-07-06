@@ -30,14 +30,15 @@
             </p>
             <input type="email" class="input-text form-control" name="email">
           </div>
+          <%} else {%>
+            <div class="account-name">
+              <p for="current-password">
+                Current Password
+                <span class="required">*</span>
+              </p>
+              <input type="password" class="input-text form-control" name="currentPass">
+            </div>
           <%}%>
-          <div class="account-name">
-            <p for="current-password">
-              Current Password
-              <span class="required">*</span>
-            </p>
-            <input type="password" class="input-text form-control" name="currentPass">
-          </div>
 
           <div class="account-name">
             <p for="new-password">

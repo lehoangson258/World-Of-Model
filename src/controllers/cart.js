@@ -34,6 +34,7 @@ const doCartInvoice = async (req, res) => {
   try {
     const {
       totalMoney,
+      amount,
     } = req.body
     const guestId = req.session.guestId
     if (!totalMoney) return res.redirect('/cart')
@@ -91,6 +92,8 @@ const viewInvoiceDetails = async (req, res) => {
         path: 'pro_id',
         model: 'Product'
       }
+    }).sort({
+      "_id": -1
     })
     
     res.render('client/order-details', {dataInvoice, moment})

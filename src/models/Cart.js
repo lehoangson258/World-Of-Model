@@ -13,10 +13,7 @@ const CartSchema = new mongoose.Schema({
       type: Number,
       default: 1
     }
-  }],
-  totalMoney: {
-    type: Number
-  }
+  }]
 }, {
   timestamps: true
 })

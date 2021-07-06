@@ -216,7 +216,7 @@ const viewAccountDetails = async (req, res) => {
 const doAccountDetails = async (req, res) => {
   try {
     const guestId = req.session.guestId;
-    const { firstName, lastName, displayName, email } = req.body;
+    const { firstName, lastName, displayName, email, phoneNumber, bankName, bankNumber } = req.body;
     const checkEmail = await User.distinct("_id", {
       email: email,
     });
@@ -230,6 +230,9 @@ const doAccountDetails = async (req, res) => {
           lastName: lastName,
           username: displayName,
           email: email,
+          phoneNumber: phoneNumber,
+          bankName: bankName,
+          bankNumber: bankNumber
         }
       );
       return res.redirect("/account/details");

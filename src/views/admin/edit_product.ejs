@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<!-- /.header -->
+<%- include('layouts/head', {title: 'Product Management '}); -%>
+
+<body>
+	<!--/.navbar -->
+	<%- include('layouts/navbar'); -%>
+
+	<!--/.sidebar-->
+	<%- include('layouts/sidebar'); -%>
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li>
+					<a href="#"><svg class="glyph stroked home">
+							<use xlink:href="#stroked-home"></use>
+						</svg>
+					</a>
+				</li>
+				<li><a href="/admin/product">Product Management</a></li>
+				<li class="active"><%= product.title %></li>
+			</ol>
+		</div>
+		<!--/.row-->
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Product: <%= product.title %></h1>
+			</div>
+		</div>
+		<!--/.row-->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<% if (error) { %>
+						<div class="alert alert-danger"><%= error %></div>
+						<%} else if (message) { %>
+						<div class="alert alert-success"><%= message %></div>
+						<%}%>
+							<form role="form" method="post" enctype="multipart/form-data">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Title</label>
+										<input name="title" required class="form-control" placeholder="" value="<%= product.title %>" />
+					</div>
+
+					<div class="form-group">
+						<label>Price</label>
+						<input name="price" required type="number" min="0" class="form-control" value="<%= product.price%>" />
+					</div>
+					<div class="form-group">
+						<label>Quantity</label>
+						<input name="quantity" required type="number" min="0" class="form-control"
+							value="<%= product.quantity %>" />
+					</div>
+					<div class="form-group">
+						<label>Brands</label>
+						<select name="cat_id" class="form-control">
+							<% for (let category of categories) { %>
+							<option value="<%= category._id%>" <%if(product.cat_id == category.name) {%> selected <%}%> >
+								<%= category.name %> </option> <%}%>
+															</select>
+														</div>
+														<div class="form-group">
+															<label>Status</label>
+															<select name="status" class="form-control">
+																<% for(let item of role=['ACTIVE', 'PENDING', 'INACTIVE']){%> <% if(product.status===item) {%> <option
+								value="<%= product.status %>" selected>
+								<%= product.status %>
+							</option>
+							<%} else {%>
+							<option value="<%= item %>">
+								<%= item %>
+							</option>
+							<%}%>
+								        <%}%>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Product Pictures</label>
+						<input name="image" id="image" type="file" multiple />
+						<br />
+						<div>
+							<% for(let image of product.image) {%>
+							<img width="100" height="150" src="/static/image/<%= image%>" />
+							<%}%>
+						</div>
+					</div>
+					<!-- <div class="form-group">
+															<label>Sản phẩm nổi bật</label>
+															<div class="checkbox">
+																<label>
+																	<input name="prd_featured" type="checkbox" value="1" />Nổi bật
+																</label>
+															</div>
+														</div> -->
+					<div class="form-group">
+						<label>Describe</label>
+						<textarea name="description" class="form-control" rows="8"><%= product.description %></textarea>
+						</div>
+						<button name="sbm" type="submit" class="btn btn-success">
+							Save
+						</button>
+						<button type="reset" class="btn btn-default">Refresh</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /.col-->
+	</div>
+	<!-- /.row -->
+	</div>
+	<!--/.main-->
+
+	<%- include('layouts/script'); -%>
+</body>
+
+</html>

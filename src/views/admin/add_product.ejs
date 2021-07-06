@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<!-- /.header -->
+<%- include('layouts/head', {title: 'Add Product' }); -%>
+
+<body>
+	<!--/.navbar -->
+	<%- include('layouts/navbar'); -%>
+
+	<!--/.sidebar-->
+	<%- include('layouts/sidebar'); -%>
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li>
+					<a href="/admin/dashboard"><svg class="glyph stroked home">
+							<use xlink:href="#stroked-home"></use>
+						</svg>
+					</a>
+				</li>
+				<li><a href="/admin/product">Product Management</a></li>
+				<li class="active">Add Product</li>
+			</ol>
+		</div>
+		<!--/.row-->
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Add Product</h1>
+			</div>
+		</div>
+		<!--/.row-->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<% if (error) { %>
+						<div class="alert alert-danger">
+							<%= error %>
+						</div>
+						<%} else if (message) { %>
+						<div class="alert alert-success">
+							<%= message %>
+						</div>
+						<%}%>
+
+												<form role="form" method="post" enctype="multipart/form-data">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label>Title</label>
+															<input name="title" required class="form-control" placeholder="" />
+														</div>
+
+														<div class="form-group">
+															<label>Price</label>
+															<input name="price" required type="number" min="0" class="form-control" />
+														</div>
+														<div class="form-group">
+															<label>Quantity</label>
+															<input name="quantity" required type="number" min="0" class="form-control" />
+														</div>
+														<div class="form-group">
+															<label>Brand</label>
+															<select name="cat_id" class="form-control">
+																<% for (let category of categories) { %>
+						<option value="<%= category._id%>">
+							<%= category.name %>
+						</option>
+						<%}%>
+															</select>
+														</div>
+														<div class="form-group">
+															<label>Status</label>
+															<select name="status" class="form-control">
+																<option value="ACTIVE">Active</option>
+																<option value="PENDING">Pending</option>
+																<option value="INACTIVE">Inactive</option>
+															</select>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group">
+															<label>Image</label>
+
+															<input name="image" required id="image" type="file" multiple/>
+															<br />
+															<div>
+																<!-- <img src="/static/admin/img/download.jpeg" /> -->
+															</div>
+														</div>
+														<!-- <div class="form-group">
+															<label>Sản phẩm nổi bật</label>
+															<div class="checkbox">
+																<label>
+																	<input name="prd_featured" type="checkbox" value="1" />Nổi bật
+																</label>
+															</div>
+														</div> -->
+														<div class="form-group">
+															<label>Description</label>
+															<textarea name="description" required class="form-control" rows="8"></textarea>
+														</div>
+														<button name="sbm" type="submit" class="btn btn-success">
+															Add
+														</button>
+														<button type="reset" class="btn btn-default">Reset</button>
+													</div>
+												</form>
+								</div>
+							</div>
+						</div>
+						<!-- /.col-->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!--/.main-->
+
+				<%- include('layouts/script'); -%>
+</body>
+
+</html>

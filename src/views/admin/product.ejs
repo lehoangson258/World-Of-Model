@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<!-- /.header -->
+<%- include('layouts/head', {title: 'Product Management' }); -%>
+
+<body>
+	<!--/.navbar -->
+	<%- include('layouts/navbar'); -%>
+
+	<!--/.sidebar-->
+	<%- include('layouts/sidebar'); -%>
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li>
+					<a href="#" ]>
+						<svg class="glyph stroked home">
+							<use xlink:href="#stroked-home"></use>
+						</svg>
+					</a>
+				</li>
+				<li class="active">Product List</li>
+			</ol>
+		</div>
+		<!--/.row-->
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Product List</h1>
+			</div>
+		</div>
+		<!--/.row-->
+		<div id="toolbar" class="btn-group">
+			<a href="/admin/product/add" class="btn btn-success">
+				<i class="glyphicon glyphicon-plus"></i> Add Product
+			</a>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<table data-toolbar="#toolbar" data-toggle="table">
+							<thead>
+								<tr>
+									<th data-field="id" data-sortable="true">#</th>
+									<th data-field="name" data-sortable="true">Name</th>
+									<th data-field="price" data-sortable="true">Price</th>
+									<th>Image</th>
+									<th>Status</th>
+									<th>Brand</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% let i = 0 %> <% for ( let product of products) {%>
+								<tr>
+									<td><%= ++i %></td>
+									<td><%=product.title%></td>
+									<td><%=product.price%></td>
+									<td style="text-align: center">
+										<% for(let image of product.image) {%>
+										<img width="100" height="150" src="/static/image/<%= image%>" />
+										<%}%>
+									</td>
+									<td>
+										<% if(product.status === 'ACTIVE') {%>
+										<span class="label label-success"><%= product.status%></span>
+										<% } else if(product.status === 'PENDING') {%>
+										<span class="label label-warning"><%= product.status%></span>
+										<%} else {%>
+										<span class="label label-danger"><%= product.status%></span>
+										<%}%>
+										</td>
+										<td><%=product.cat_id.name%></td>
+									<td class="form-group">
+										<a href="/admin/product/edit/<%= product._id%>" class="btn btn-primary">
+											<i class="glyphicon glyphicon-pencil"></i>
+										</a>
+										<a href="/admin/product/delete/<%= product._id%>" class="btn btn-danger">
+											<i class="glyphicon glyphicon-remove"> </i>
+										</a>
+									</td>
+								</tr>
+								<%}%>
+								</tbody>
+							</table>
+						</div>
+						<!-- Pagination -->
+						<%- include('layouts/pagination', {namepage: "product"}); -%>
+					</div>
+				</div>
+			</div>
+			<!--/.row-->
+		</div>
+		<!--/.main-->
+
+		<%-include('layouts/script'); -%>
+</body>
+
+</html>

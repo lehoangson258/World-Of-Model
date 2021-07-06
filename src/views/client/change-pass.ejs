@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('layouts/head.ejs'); -%>
+</head>
+
+<body>
+
+  <div class="container">
+    <%- include('layouts/navbar.ejs'); -%>
+  </div>
+
+  <!--------------account details----------->
+  <div class="small-container account-details">
+    <h1>Change Password</h1>
+  </div>
+
+  <div class="boxMain">
+
+    <div class="box-text">
+      <form action="<% !loggedIn ? '/account/details/change-password' : '/account/forgot-password'%>" method="POST">
+        <fieldset>
+          <legend>Password Change</legend>
+          <% if(!loggedIn) {%>
+          <div class="account-name">
+            <p>
+              Email
+              <span class="required">*</span>
+            </p>
+            <input type="email" class="input-text form-control" name="email">
+          </div>
+          <%}%>
+          <div class="account-name">
+            <p for="current-password">
+              Current Password
+              <span class="required">*</span>
+            </p>
+            <input type="password" class="input-text form-control" name="currentPass">
+          </div>
+
+          <div class="account-name">
+            <p for="new-password">
+              New Password
+              <span class="required">*</span>
+            </p>
+            <input type="password" class="input-text form-control" name="newPass">
+          </div>
+
+          <div class="account-name">
+            <p for="confirm-password">
+              Confirm New Password
+              <span class="required">*</span>
+            </p>
+            <input type="password" class="input-text form-control" name="confirmPass">
+          </div>
+        </fieldset>
+        <button type="submit" class="save-btn">Save Change</button>
+      </form>
+    </div>
+  </div>
+
+  <!----------------footer----------------->
+  <%- include('layouts/footer.ejs'); -%>
+
+          <!--------------js for toggle menu-------------->
+          <script src="/static/client/js/main.js"></script>
+</body>
+
+</html>

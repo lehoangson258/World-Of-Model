@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('layouts/head.ejs'); -%>
+    
+</head>
+
+<body>
+
+    <div class="container">
+        <%- include('layouts/navbar.ejs'); -%>
+    </div>
+
+    <!--------------cart items details----------->
+    <div class="small-container cart-page">
+        <h1>My Cart</h1>
+        <form action="/cart/invoice" method="POST">
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+                <% if(cart.length > 0) {%>
+                <% for(let item of cart) {%>
+                    <tr>
+                        <td>
+                            <div class="cart-info">
+                                <img src="/static/image/<%= item.pro_id.image[0] %>">
+                                <div>
+                                    <p><%= item.pro_id.title%></p>
+                                    <small>Price: $<%= item.pro_id.price %>.00</small>
+                                    <br>
+                                    <a href="/cart/remove/<%= item.pro_id._id %>">Remove</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" name="amount" class="field1" value="1" required />
+                        </td>
+                        <td>
+                            <div class="cart-row">
+                                <input type="hidden" class="field2" value="<%= item.pro_id.price %>" />
+                                <input type="number" disabled class="field3" value="<%= item.pro_id.price %>" />
+                            </div>
+                        </td>
+                    </tr>
+                <%}%>
+                <%} else {%>
+                <tr>
+                    <td>
+                        <p>Your cart is empty</p>
+                    </td>
+                </tr>
+                <%}%>
+            </table>
+
+            <div class="total-price">
+                <table>
+                    <tr>
+                        <td>Total</td>
+                        <td>
+                            $<input type="number" readonly="true" name="totalMoney" class="total" value=""/>
+                    </td>
+                    </tr>
+            </table>
+    </div>
+    <% if (cart.length > 0) {%>
+                <button type="submit" class="btn-cart">Buy Now &#8594;</button>
+                <%} else {%>
+                <a href="/products" class="btn-invoice">Start Buying</a>
+                <%}%>
+        </form>
+    </div>
+
+    <!----------------footer----------------->
+    <%- include('layouts/footer.ejs'); -%>
+
+                <!--------------js for toggle menu-------------->
+                <script src="/static/client/js/main.js"></script>
+                <script src="/static/client/js/cart.js"></script>
+</body>
+
+</html>

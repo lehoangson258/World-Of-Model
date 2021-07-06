@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<!-- /.header -->
+<%- include('layouts/head', {title: 'Category Managerment'}); -%>
+
+<body>
+    !--/.navbar -->
+    <%- include('layouts/navbar'); -%>
+
+    <!--/.sidebar-->
+    <%- include('layouts/sidebar'); -%>
+
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#"><svg class="glyph stroked home">
+                            <use xlink:href="#stroked-home"></use>
+                        </svg></a></li>
+                <li><a href="/admin/category">Category Managerment</a></li>
+                <li class="active"><%= category.name %></li>
+            </ol>
+        </div>
+        <!--/.row-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Brands: <%= category.name %></h1>
+            </div>
+        </div>
+        <!--/.row-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-8">
+                            <% if (error) { %>
+                            <div class="alert alert-danger"><%= error %></div>
+                            <%} else if (message) { %>
+                            <div class="alert alert-success"><%= message %></div>
+                            <%}%>    
+                            <form role="form" method="post">
+                                <div class="form-group">
+                                    <label>Brand Name</label>
+                                    <input type="text" name="brandName" class="form-control"
+                                        value="<%= category.name %>" >
+
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select name="status" class="form-control">
+                                <% for(let item of role=['ACTIVE', 'PENDING', 'INACTIVE']){%>
+                                <% if(category.status===item) {%>
+                                <option value="<%= category.status %>" selected>
+                                    <%= category.status %>
+                                </option>
+                                <%} else {%>
+                                <option value="<%= item %>">
+                                    <%= item %>
+                                </option>
+                                <%}%>
+								        <%}%>
+                            </select>
+                        </div>
+                        <button type="submit" name="sbm" class="btn btn-primary">Upadte</button>
+                        <button type="reset" class="btn btn-default">Refresh</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.col-->
+    </div>
+    <!--/.main-->
+    <%- include('layouts/script'); -%>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('layouts/head.ejs'); -%>
+</head>
+
+<body>
+
+    <div class="container">
+        <%- include('layouts/navbar.ejs'); -%>
+    </div>
+
+    <!------------account page------------>
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="/static/image/image4.png" width="100%">
+                </div>
+
+                <div class="col-2">
+                    <div class="form-container">
+                        <div class="form-btn">
+                            <span onclick="login()">Login</span>
+                            <span onclick="register()">Register</span>
+                            <hr id="Indicator">
+                        </div>
+                        <% if(error) {%>
+                        <p><%= error %></p>
+                        <%}%>
+                        <form id="LoginForm" method="POST" action="/login">
+                            <input type="email" name="email" placeholder="Email">
+                            <input type="password" name="password" placeholder="Password">
+                            <button type="submit" class="btn">Login</button>
+                            <a href="/account/forgot-password">Forgot password</a>
+                        </form>
+
+                        <form id="RegForm" method="POST" action="/register">
+                            <input type="text" name="username" placeholder="Username" required>
+                            <input type="email" name="email" placeholder="Email" required>
+                            <input type="password" name="password" placeholder="Password" required>
+                            <input type="password" name="repass" placeholder="Confirm Password" required>
+                            <button type="submit" class="btn">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------footer----------------->
+    <%- include('layouts/footer.ejs'); -%>
+
+                        <script src="/static/client/js/main.js"></script>
+</body>
+
+</html>

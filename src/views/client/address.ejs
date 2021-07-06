@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('layouts/head.ejs'); -%>
+</head>
+
+<body>
+
+    <div class="container">
+        <%- include('layouts/navbar.ejs'); -%>
+    </div>
+
+    <!--------------address details----------->
+    <div class="small-container account-details">
+        <h1>My Address</h1>
+    </div>
+
+    <div class="boxMain">
+        <%- include('layouts/boxMenu.ejs'); -%>
+
+        <div class="box-text">
+            <form action="/account/details/address" method="POST">
+                <div class="account-name">
+                    <p for="account_first_name">
+                        Your Full Name
+                        <span class="required">*</span>
+                    </p>
+                    <p><%= user.firstName + ' ' + user.lastName %></p>
+                </div>
+
+                <div class="account-name">
+                    <p for="account_last_name">
+                        Address Company
+                        <span class="required">*</span>
+                    </p>
+                    <input type="text" class="input-text form-control" name="company"
+                        value="<%= user.address.company %>">
+                </div>
+
+                <!-------------------Password change------------------>
+                <div class="account-name">
+                    <legend>Nation / Region</legend>
+                    <h3>Viet Nam</h3>
+                    <div class="account-name">
+                        <p for="province-city">
+                            Province / City
+                            <span class="required">*</span>
+                        </p>
+                        <input type="text" class="input-text form-control" name="city" value="<%= user.address.city %>">
+                    </div>
+
+                    <div class="account-name">
+                        <p for="district">
+                            District
+                            <span class="required">*</span>
+                        </p>
+                        <input type="text" class="input-text form-control" name="district"
+                            value="<%= user.address.district %>">
+                    </div>
+
+                    <div class="account-name">
+                        <p for="commune-ward-town">
+                            Commune / Ward / Town
+                            <span class="required">*</span>
+                        </p>
+                        <input type="text" class="input-text form-control" name="ward" value="<%= user.address.ward %>">
+                    </div>
+
+                    <div class="account-name">
+                        <p for="address-details">
+                            Address Details
+                            <span class="required">*</span>
+                        </p>
+                        <input type="text" class="input-text form-control" name="details"
+                            value="<%= user.address.details %>">
+                    </div>
+                </div>
+
+                <button type="submit" class="save-btn">Save Changes</button>
+
+            </form>
+        </div>
+    </div>
+
+    <!----------------footer----------------->
+    <%- include('layouts/footer.ejs'); -%>
+
+    <!--------------js for toggle menu-------------->
+    <script src="/static/client/js/main.js"></script>
+
+
+
+</body>
+
+</html>

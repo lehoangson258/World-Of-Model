@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('layouts/head.ejs'); -%>
+</head>
+
+<body>
+
+    <div class="container">
+        <%- include('layouts/navbar.ejs'); -%>
+    </div>
+
+    <!--------------account details----------->
+    <div class="small-container account-details">
+        <h1>My Account</h1>
+    </div>
+
+    <div class="boxMain">
+        <%- include('layouts/boxMenu.ejs'); -%>
+
+        <div class="box-text">
+            <form action="/account/details" method="POST">
+                <div class="account-name">
+                    <p for="account_first_name">
+                        First Name
+                        <span class="required">*</span>
+                    </p>
+                    <input type="text" class="input-text form-control" name="firstName" value="<%= user.firstName %>"
+                        required>
+                </div>
+
+                <div class="account-name">
+                    <p for="account_last_name">
+                        Last Name
+                        <span class="required">*</span>
+                    </p>
+                    <input type="text" class="input-text form-control" name="lastName" value="<%= user.lastName %>"
+                        required>
+                </div>
+
+                <div class="account-name">
+                    <p for="account_display_name">
+                        Display Name
+                        <span class="required">*</span>
+                    </p>
+                    <input type="text" class="input-text form-control" name="displayName" value="<%= user.username %>"
+                        required>
+                    <br>
+
+                    <i>This will be how your name will be displayed in the account section and in reviews</i>
+                </div>
+
+                <div class="account-name">
+                    <p for="account_email">
+                        Email
+                        <span class="required">*</span>
+                    </p>
+                    <input type="text" class="input-text form-control" name="email" value="<%= user.email %>" required>
+                </div>
+                <!-------------------Password change------------------>
+                <button type="submit" class="save-btn">Save Change</button>
+            </form>
+            <legend>Password</legend>
+            <a href="/account/details/change-password" class="save-btn">Change</a>
+        </div>
+    </div>
+
+    <!----------------footer----------------->
+    <%- include('layouts/footer.ejs'); -%>
+
+    <!--------------js for toggle menu-------------->
+    <script src="/static/client/js/main.js"></script>
+</body>
+
+</html>

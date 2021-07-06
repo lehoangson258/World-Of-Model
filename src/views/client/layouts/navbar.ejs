@@ -1,0 +1,29 @@
+<div class="navbar">
+  <div class="logo">
+    <a href="/"> <img src="/static/image/logo-white.png" alt="logo" width="300px"> </a>
+  </div>
+
+  <nav>
+    <ul id="MenuItems">
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <% if(!loggedIn) {%>
+      <li><a href="/account">Account</a></li>
+      <%}%>
+      <li>
+        <div class="wrap">
+          <form action="/search" class="search">
+            <input type="search" name="keyword" class="searchTerm">
+            <button type="submit" class="searchButton">Search</button>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <% if(loggedIn) {%>
+      <a href="/account/details"><img src="/static/image/user icon.jpg" alt="user" class="user-icon"></a>
+      <a href="/cart"><img src="/static/image/cart.png" alt="item" class="cart-icon"></a>
+      <%}%>
+  <img src="/static/image/menu.png" alt="menu icon" class="menu-icon" onclick="menutoggle()">
+</div>

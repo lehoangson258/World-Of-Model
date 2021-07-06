@@ -1,0 +1,12 @@
+<div class="brands">
+  <div class="smalll-container">
+    <div class="row">
+      <% for (let category of categories) { %>
+      <div class="col-5">
+        <a href="/category/<%= category.name %>/<%= category.id %>"><img
+            src="/static/image/brands/<%= category.icon %>" alt="<%= category.name %>"></a>
+      </div>
+      <%}%>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('layouts/head.ejs'); -%>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+
+            <%- include('layouts/navbar.ejs'); -%>
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="space1">
+                        <h1>Welcome to
+                            <br>WORLD OF MODEL
+                            <br>Place your order now!
+                        </h1>
+                        <p>Buy it now or regret later.</p>
+    
+                        <a href="/products" class="btn">Buy Now &#8594;</a>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <img src="/static/image/image4.png" alt="back-ground">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------- featured categories ---------->
+    <div class="categories">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <img src="/static/image/category-superman.jpg" alt="mau hang">
+                </div>
+                <div class="col-3">
+                    <img src="/static/image/category-iron man.jpg" alt="mau hang 2">
+                </div>
+                <div class="col-3">
+                    <img src="/static/image/category-john wich.jpg" alt="mau hang 3">
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!---------------------------Hottoys products -------------------------->
+    <div class="small-container">
+        <h2 class="title">Hot Toys Products</h2>
+
+        <div class="row">
+            <% for(let item of hotToys) {%>
+            <div class="col-4">
+                <a href="/products/details/<%= item._id %>"><img src="/static/image/<%= item.image[0] %>"></a>
+                <a href="/products/details/<%= item._id %>">
+                    <h4><%= item.title %></h4>
+                </a>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>$<%= item.price %>.00</p>
+            </div>
+            <%}%>
+        </div>
+
+        
+
+        <!-------------------------------- hasbro products --------------------------->
+
+        <h2 class="title">Hasbro Pulse Products</h2>
+
+        <div class="row">
+            <% for(let item of hasbroPulse) {%>
+            <div class="col-4">
+                <a href="/products/details/<%= item._id %>"><img src="/static/image/<%= item.image[0] %>"></a>
+                <a href="/products/details/<%= item._id %>">
+                    <h4><%= item.title %></h4>
+                </a>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>$<%= item.price %>.00</p>
+            </div>
+            <%}%>
+        </div>
+
+        <!------------------------------- bandai products ------------------------------>
+
+        <h2 class="title">Bandai Products</h2>
+
+        <div class="row">
+            <% for(let item of banDai) {%>
+            <div class="col-4">
+                <a href="/products/details/<%= item._id %>"><img src="/static/image/<%= item.image[0] %>"></a>
+                <a href="/products/details/<%= item._id %>">
+                    <h4><%= item.title %></h4>
+                </a>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>$<%= item.price %>.00</p>
+            </div>
+            <%}%>
+        </div>
+
+        <!----------------------------------- deluxe products -------------------------------------->
+
+        <h2 class="title">Deluxe Products</h2>
+
+        <div class="row">
+            <% for(let item of deLuxe) {%>
+            <div class="col-4">
+                <a href="/products/details/<%= item._id %>"><img src="/static/image/<%= item.image[0] %>"></a>
+                <a href="/products/details/<%= item._id %>">
+                    <h4><%= item.title %></h4>
+                </a>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>$<%= item.price %>.00</p>
+            </div>
+            <%}%>
+        </div>
+
+        <!--------------------------------- Latest Products --------------------------------->
+        <h2 class="title">Latest Products</h2>
+
+        <div class="row">
+            <% for(let item of laTest) {%>
+            <div class="col-4">
+                <a href="/products/details/<%= item._id %>"><img src="/static/image/<%= item.image[0] %>"></a>
+                <a href="/products/details/<%= item._id %>">
+                    <h4><%= item.title %></h4>
+                </a>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p>$<%= item.price %>.00</p>
+            </div>
+            <%}%>
+        </div>
+    </div>
+    
+    <!------------------------------------ offer ------------------------------------->
+    <div class="offer">
+        <div class="small-container">
+            <div class="row">
+                <% for (let item of marVel) {%>
+                <div class="col-2">
+                    <a href="/products/details/<%= item._id %>"><img src="/static/image/<%= item.image[0] %>" class="offer-img"></a>
+                </div>
+                <div class="col-2">
+                    <!-- <div class="space"></div> -->
+                    <p class="space">Pre-Order</p>
+                    <h1><%= item.title %></h1>
+                    <small><%= item.description %></small>
+                    <br>
+                    <a href="/products/details/<%= item._id %>" class="btn">Order Now &#8594;</a>
+                </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+
+    <!---------------------------------------buyer--------------------------------------->
+    <div class="testimonial">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <h2>WE</h2>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="/static/image/buyer/buyer-1.jpg" alt="user">
+                    <h3>Hoang Son Le</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <h2>ARE</h2>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="/static/image/buyer/buyer-1.jpg" alt="user">
+                    <h3>Le Hoang Son</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <h2>CEO</h2>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="/static/image/buyer/buyer-1.jpg" alt="user">
+                    <h3>Son Hoang Le</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-----------------------------------------brands------------------------------------>
+    <%- include('layouts/brand') -%>
+    <!--------------------------------------footer-------------------------------->
+    <%- include('layouts/footer.ejs'); -%>
+
+    <!--------------js for toggle menu-------------->
+    <script src="/static/client/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('layouts/head.ejs'); -%>
+</head>
+
+<body>
+
+    <div class="container">
+        <%- include('layouts/navbar.ejs'); -%>
+    </div>
+
+    <!---------------single product details----------->
+    <div class="small-container single-product">
+
+        <div class="row">
+            <div class="col-2">
+                <img src="/static/image/<%= product.image[0]%>" width="100%" id="ProductImg">
+
+                <!---------small img product--------->
+                <div class="small-img-row">
+                    <% for(let item of product.image) {%>
+                    <div class="small-img-col">
+                        <img src="/static/image/<%= item %>" width="100%" class="small-img">
+                    </div>
+                    <%}%>
+                </div>
+
+            </div>
+
+            <div class="col-2">
+                <p>Home / <%= product.cat_id.name %></p>
+                <h1><%= product.title%></h1>
+                    <h4>$<%= product.price %>.00</h4>
+                    <a href="/products/details/<%= product._id %>/add-cart" class="btn">Add To Cart</a>
+                    <h3>Product Details</h3>
+                    <br>
+                    <p><%= product.description %></p>
+                </div>
+            </div>
+        </div>
+
+        <!--------------related products------------>
+        <div class="small-container">
+            <div class="row row-2">
+                <h2>Related Products</h2>
+                <a href="/products">View More</a>
+            </div>
+        </div>
+
+        <!---------- All products ---------->
+        <div class="small-container">
+            <div class="row">
+                <% for(let item of related) {%>
+                <div class="col-4">
+                    <a href="/products/details/<%= item._id %>"><img src="/static/image/<%= item.image[0] %>"></a>
+                    <h4><%= item.title %></h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>$<%= item.price %>.00</p>
+                </div>
+                <%}%>
+            </div>
+        </div>
+
+        <!----------------footer----------------->
+        <%- include('layouts/footer.ejs'); -%>
+
+        <!--------------js for toggle menu-------------->
+        <script src="/static/client/js/main.js"></script>
+</body>
+
+</html>

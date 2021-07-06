@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('layouts/head.ejs'); -%>
+</head>
+
+<body>
+
+    <div class="container">
+        <%- include('layouts/navbar.ejs'); -%>
+    </div>
+
+    <div class="invoice-container">
+        <div class="invoice-box">
+
+            <div class="invoice-left">
+                <h3>WordOfModel</h3>
+
+                <div class="invoice-title">
+                    Office Earth <br>
+                    Ha Noi, Viet Nam <br>
+                    +83 80808 9999 <br>
+                </div>
+            </div>
+
+            <div class="invoice-right">
+                <h3>Invoice #WOM2000</h3>
+
+                <p>Date: <%= date %></p>
+            </div>
+
+        </div>
+
+        <hr class="invoice-line">
+
+        <div class="invoice-box">
+
+            <div class="invoice-left">
+
+                <h3>Invoice To:</h3>
+                <h4><%= invoice.user_id.username %></h4>
+                <p><%= invoice.user_id.address.details %> </p>
+                <p>+83 80808 9999 </p>
+                <p><%= invoice.user_id.email %></p>
+
+            </div>
+
+            <div class="invoice-right">
+                <div class="payment-box">
+                    <h3>Payment Details</h3>
+
+                    <table>
+                        <tr>
+                            <td>Total Due:</td>
+                            <td>$<%= invoice.totalMoney %>.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Bank Name:</td>
+                            <td>VietcomBank</td>
+                        </tr>
+
+                        <tr>
+                            <td>Country:</td>
+                            <td>Viet Nam</td>
+                        </tr>
+
+                        <tr>
+                            <td>IBAN:</td>
+                            <td>WOM2000</td>
+                        </tr>
+
+                        <tr>
+                            <td>SWIFT code:</td>
+                            <td>BFTVVNVX</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="invoice-line">
+
+        <div class="button-invoice">
+            <a href="/products" class="btn-invoice">Continue Buying &#8594;</a>
+        </div>
+
+    </div>
+
+    <!----------------footer----------------->
+    <%- include('layouts/footer.ejs'); -%>
+
+    <!--------------js for toggle menu-------------->
+    <script src="/static/client/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<% if (pages > 0) {%>
+	<div class="page-btn">
+		<% if (current !== 1) {%>
+		<span>
+			<a href="/<%= namePage %>">&#8592;</a>
+		</span>
+		<%}%>
+		<!-- Cac trang  -->
+		<% var i = (current > 3 ? current - 2 : 1) %>
+		<% if ( i !== 1 ) {%>
+		<span>...</span>
+		<%}%>
+		<!-- Vong lap qua tung trang va tang so trang -->
+		<% for (; i <= current + 2 && i <= pages; i++) {%>
+		<% if ( i == current ) {%>
+		<span>
+			<a href="/<%= namePage %>?page=<%= i %>"><%= i %></a>
+		</span>
+		<%} else {%>
+		<span>
+			<a href="/<%= namePage %>?page=<%= i %>"><%= i %></a>
+		</span>
+		<%}%>
+		<!--  -->
+		<% if (i == current + 2 && i < pages) {%>
+		<span>...</span>
+		<%}%> <%}%>
+		<!-- Cuoi trang  -->
+		<% if (current !== pages) {%>
+		<span>
+			<a href="/<%= namePage %>?page=<%= pages %>">&#8594;</a>
+		</span>
+		<%}%>
+	</div>
+	<%}%>

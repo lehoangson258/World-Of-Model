@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('layouts/head.ejs'); -%>
+</head>
+<body>
+
+<div class="container">
+    <%- include('layouts/navbar.ejs'); -%>
+</div>
+
+<div class="small-container account-details">
+  <h1>Order Details</h1>
+</div>
+
+<div class="boxMain-order">
+    <%- include('layouts/boxMenu.ejs'); -%>
+
+<div>
+  <div class="box-order">
+  <table>
+    <tr class="header">
+
+      <th>#</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Purchase Date</th>
+      <th>Total Money</th>
+    </tr>  
+    <% var i = 0;%>
+    <% for (let invoice of dataInvoice) {%>
+    <tr>
+      <td><%= ++i %></td>
+      
+      <td><%= invoice.totalItems %></td>
+      <td><%= moment(invoice.createdAt).format('L') %></td>
+      <td><%= invoice.totalMoney %></td>
+    </tr>
+    <%}%>
+</table>
+
+</div>
+</div>
+</div>  
+
+
+
+
+
+<!----------------footer----------------->
+<%- include('layouts/footer.ejs'); -%>
+
+<!--------------js for toggle menu-------------->
+<script src="/static/client/js/main.js"></script>
+
+</body>
+</html>

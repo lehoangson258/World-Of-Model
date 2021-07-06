@@ -36,6 +36,7 @@ router.get('/account/details/change-password', authMiddleware.checkAccount, auth
 router.post('/account/details/change-password', authMiddleware.checkAccount, authController.doChangePass);
 router.get('/account/details/address', authMiddleware.checkAccount, userController.viewAddress);
 router.post('/account/details/address', authMiddleware.checkAccount, userController.doAddress);
+router.get('/account/details/invoice', authMiddleware.checkAccount, cartController.viewInvoiceDetails);
 
 // Cart
 router.get('/cart', authMiddleware.checkAccount, cartController.viewCart);

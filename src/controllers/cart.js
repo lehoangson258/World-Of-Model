@@ -2,7 +2,7 @@ const Cart = require('../models/Cart');
 const moment = require('moment');
 const Invoice = require('../models/Invoice');
 
-
+// Client
 const viewCart = async (req, res, next) => {
   const guestId = req.session.guestId
   const cartData = await Cart.findOne({user_id: guestId}).populate({path: 'bag', populate: {path: 'pro_id', model: 'Product'}})
@@ -80,6 +80,27 @@ const viewInvoice = async (req, res) => {
   }
 }
 
+const viewInvoiceDetails = async (req, res) => {
+  try {
+    const guestId = req.session.guestId
+    const dataInvoice = await Invoice.find({
+      user_id: guestId
+    }).populate({
+      path: 'items',
+      populate: {
+        path: 'pro_id',
+        model: 'Product'
+      }
+    })
+    console.log(dataInvoice.items);
+    res.render('client/order-details', {dataInvoice, moment})
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+// Admin
 const viewInvoiceAdmin = async (req, res) => {
   try {
     const pagination = {
@@ -110,5 +131,6 @@ module.exports = {
   viewInvoice: viewInvoice,
   removeCart: removeCart,
   doCartInvoice: doCartInvoice,
-  viewInvoiceAdmin: viewInvoiceAdmin
+  viewInvoiceAdmin: viewInvoiceAdmin,
+  viewInvoiceDetails: viewInvoiceDetails
 }

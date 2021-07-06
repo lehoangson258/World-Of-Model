@@ -4,7 +4,16 @@ const InvoiceSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  items: [],
+  items: [{
+    pro_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product'
+    },
+    amount: {
+      type: Number,
+      default: 1
+    }
+  }],
   totalItems: {
     type: Number,
   },

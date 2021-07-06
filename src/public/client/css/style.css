@@ -851,6 +851,56 @@ label{
     text-decoration: none;
 }
 
+/*------------------------------order details----------------------------------*/
+.boxMain-order{
+    margin: 20px 440px 100px 230px;
+    height: 700px;
+}
+
+.box-order{
+    margin-left: 40px;
+    float: left;
+    position: relative;
+}
+
+.box-order table{
+    border-collapse: collapse;
+    width: 1060px;
+    height: 200px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.box-order tr{
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+
+.box-order tr:hover{
+    background-color: #f5f5f5;
+    transform: scale(1.02);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.box-order th{
+    text-align: left;
+    padding: 12px;
+    color: #fff;
+    background: #ff523b;
+    font-weight: normal;
+}
+
+.box-order td{
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.box-order table .header{
+    transition: none;
+    transform: none;
+    box-shadow: none;
+}
+
 /*--------------------media query for menu item--------------------*/
 @media only screen and (max-width: 900px){
     nav ul{
